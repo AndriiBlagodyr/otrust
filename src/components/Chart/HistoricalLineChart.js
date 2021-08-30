@@ -198,6 +198,7 @@ const LineChart = React.memo(props => {
       .attr('x2', xScale(data[data.length - 1][x_var]))
       .attr('y1', margin.left)
       .attr('y2', margin.left)
+      .style('cursor', 'crosshair')
       .style('stroke-dasharray', '4,4');
     //highlightXLine (defined in render) - white line top to bottom
     select('.highlightXLine')
@@ -209,6 +210,7 @@ const LineChart = React.memo(props => {
       .attr('x2', margin.left)
       .attr('y1', margin.top - 10)
       .attr('y2', height - margin.top - margin.bottom)
+      .style('cursor', 'crosshair')
       .style('stroke-dasharray', '4,4');
     //highlightXText (defined in render) - text on rect on Y axis with value
     select('.highlightXText')
@@ -238,7 +240,8 @@ const LineChart = React.memo(props => {
       .attr('stroke', theme.colors.bgNormal)
       .attr('stroke-width', 3)
       .attr('transform', 'translate(' + xScale(data[0][x_var]) + ',' + yScale(data[0][y_var]) + ')')
-      .attr('r', 4);
+      .attr('r', 4)
+      .style('cursor', 'crosshair');
 
     //data dependents
     //background baseLine - all values
@@ -251,7 +254,8 @@ const LineChart = React.memo(props => {
       .attr('stroke', `${theme.colors.bgHighlight}`)
       .attr('stroke-width', '0.16rem')
       .attr('fill', 'none')
-      .attr('d', lineGenerator);
+      .attr('d', lineGenerator)
+      .style('cursor', 'crosshair');
 
     const pathLength = baseline.node().getTotalLength();
 
@@ -304,7 +308,7 @@ const LineChart = React.memo(props => {
       .style('color', `${theme.colors.textThirdly}`)
       .style('font-size', '0.7rem');
 
-    xComplex.selectAll('.tick line').style('color', `${theme.colors.bgNormal}`);
+    xComplex.selectAll('.tick line').style('color', `${theme.colors.bgNormal}`).style('cursor', 'crosshair');
 
     //x Axis minor - copied from BondLineChart
     const xAxis1 = axisBottom(xScale).tickSize('10').ticks(25).tickFormat([]);
@@ -328,7 +332,7 @@ const LineChart = React.memo(props => {
 
     yComplex.selectAll('.tick text').style('color', `${theme.colors.txtThirdly}`);
 
-    yComplex.selectAll('.tick line').style('color', `${theme.colors.bgNormal}`);
+    yComplex.selectAll('.tick line').style('color', `${theme.colors.bgNormal}`).style('cursor', 'crosshair');
 
     //hover rect mouseover functionality.
     // can simplify, move to external function once functionality fixed...
@@ -337,6 +341,7 @@ const LineChart = React.memo(props => {
       .attr('height', height - margin.top - margin.bottom)
       .attr('fill', 'transparent')
       .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
+      .style('cursor', 'crosshair')
       .on('mouseover', function (event) {
         //get current index - need to switch to a constant - easier if chart only called when needed
         var mouse_date = xScale.invert(event.offsetX);
@@ -406,7 +411,8 @@ const LineChart = React.memo(props => {
             .interrupt()
             .transition()
             .duration(transitionTime)
-            .attr('stroke-dashoffset', pathLength - pathInvisibleLength);
+            .attr('stroke-dashoffset', pathLength - pathInvisibleLength)
+            .style('cursor', 'crosshair');
 
           select('.highlightRect')
             .attr('visibility', 'visible')
