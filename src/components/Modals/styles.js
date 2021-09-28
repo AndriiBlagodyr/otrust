@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   padding: 4px;
 
   position: absolute;
-  top: 45%;
+  top: 50%;
   left: 50%;
 
   background-color: ${props => props.theme.colors.bgNormal};

@@ -6,7 +6,7 @@ exports[`Given the BridgeSwapModalDisconnected component when the component is r
   width: 500px;
   padding: 4px;
   position: absolute;
-  top: 45%;
+  top: 50%;
   left: 50%;
   background-color: #201d2a;
   border-radius: 8px;

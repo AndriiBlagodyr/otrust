@@ -6,7 +6,7 @@ exports[`Given the ConfirmTransactionModal component and bidDenom is weak should
   width: 500px;
   padding: 4px;
   position: absolute;
-  top: 45%;
+  top: 50%;
   left: 50%;
   background-color: #201d2a;
   border-radius: 8px;
@@ -598,7 +598,7 @@ exports[`Given the ConfirmTransactionModal component when the component is rende
   width: 500px;
   padding: 4px;
   position: absolute;
-  top: 45%;
+  top: 50%;
   left: 50%;
   background-color: #201d2a;
   border-radius: 8px;
