@@ -619,10 +619,6 @@ exports[`Given the BridgeSwapModal component when the component is rendered shou
   display: flex;
 }
 
-.c28 h2 {
-  margin: 8px auto;
-}
-
 @media screen and (max-width:1440px) {
   .c0 {
     width: 400px;

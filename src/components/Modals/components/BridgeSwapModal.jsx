@@ -80,7 +80,7 @@ const ModalHeader = styled.header`
   display: flex;
 
   h2 {
-    margin: ${props => (props.isTabletOrMobile ? '8px auto' : 'none')};
+    margin: ${props => (props.isTabletOrMobile ? '8px auto' : '')};
   }
 `;
 
@@ -102,7 +102,7 @@ function BridgeSwapModalInfo({ closeModalClickHandler }) {
 
   return (
     <Modal.Info>
-      <ModalHeader isTabletOrMobile>
+      <ModalHeader isTabletOrMobile={isTabletOrMobile}>
         {isTabletOrMobile && (
           <ModalBtn onClick={closeModalClickHandler}>
             <FontAwesomeIcon icon={faChevronLeft} />
