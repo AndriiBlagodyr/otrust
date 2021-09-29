@@ -401,9 +401,8 @@ export const BridgeModalWrapper = styled(Wrapper)`
 
   @media screen and (max-width: ${responsive.laptopSmall}) {
     width: 600px;
-    top: 50px;
+    top: 20px;
     transform: translate(-50%, 0);
-    max-height: calc(100% - 100px);
   }
 `;
 

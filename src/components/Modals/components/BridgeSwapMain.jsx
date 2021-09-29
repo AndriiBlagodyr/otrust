@@ -46,7 +46,7 @@ export default function BridgeSwapMain({ closeBridgeModal }) {
   const [showTransactionCompleted, setShowTransactionCompleted] = useState(false);
   const [showLoader, setShowLoader] = useState(false);
 
-  const isBigScreen = useMediaQuery({ minWidth: responsive.smartphoneLarge });
+  const standardBrigdeBreakpoint = useMediaQuery({ minWidth: responsive.smartphoneLarge });
 
   const { account, library } = useWeb3React();
   const { weakBalance } = useChain();
@@ -139,7 +139,7 @@ export default function BridgeSwapMain({ closeBridgeModal }) {
     updateAllowanceAmount();
   };
 
-  const closeModalClickHandler = () => {
+  const closeModal = () => {
     if (!isTransactionPending) {
       closeBridgeModal();
     }
@@ -248,7 +248,7 @@ export default function BridgeSwapMain({ closeBridgeModal }) {
       maxBtnClickHandler,
       submitTransClickHandler,
       onCancelClickHandler,
-      closeModalClickHandler,
+      closeModal,
       setGasPriceChoice,
       setGasPrice,
     },
@@ -256,8 +256,7 @@ export default function BridgeSwapMain({ closeBridgeModal }) {
 
   return (
     <>
-      {isBigScreen === true && <BridgeSwapModal {...Props} />}
-      {isBigScreen === false && <BridgeSwapMobile {...Props} />}
+      {standardBrigdeBreakpoint ? <BridgeSwapModal {...Props} /> : <BridgeSwapMobile {...Props} />}
     </>
   );
 }

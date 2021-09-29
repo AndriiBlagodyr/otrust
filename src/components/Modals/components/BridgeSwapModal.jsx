@@ -80,7 +80,7 @@ const ModalHeader = styled.header`
   display: flex;
 
   h2 {
-    margin: ${props => (props.isTabletOrMobile ? '8px auto' : '')};
+    margin: ${props => (props.collapsedInfoBreakpoint ? '8px auto' : '')};
   }
 `;
 
@@ -97,14 +97,14 @@ const ModalBtn = styled.button`
   cursor: pointer;
 `;
 
-function BridgeSwapModalInfo({ closeModalClickHandler }) {
-  const isTabletOrMobile = useMediaQuery({ maxWidth: responsive.laptopSmall });
+function BridgeSwapModalInfo({ closeModal }) {
+  const collapsedInfoBreakpoint = useMediaQuery({ maxWidth: responsive.laptopSmall });
 
   return (
     <Modal.Info>
-      <ModalHeader isTabletOrMobile={isTabletOrMobile}>
-        {isTabletOrMobile && (
-          <ModalBtn onClick={closeModalClickHandler}>
+      <ModalHeader collapsedInfoBreakpoint={collapsedInfoBreakpoint}>
+        {collapsedInfoBreakpoint && (
+          <ModalBtn onClick={closeModal}>
             <FontAwesomeIcon icon={faChevronLeft} />
           </ModalBtn>
         )}
@@ -160,19 +160,21 @@ export default function BridgeSwapModal({ ...props }) {
   const { values, flags, handlers } = { ...props };
   const [showInfoModal, setShowInfoModal] = useState(false);
 
-  const isTabletOrMobile = useMediaQuery({ query: `(max-width: ${responsive.laptopSmall})` });
+  const collapsedInfoBreakpoint = useMediaQuery({
+    query: `(max-width: ${responsive.laptopSmall})`,
+  });
 
   return (
     <>
-      <Dimmer onClick={() => handlers.closeModalClickHandler()} />
+      <Dimmer onClick={() => handlers.closeModal()} />
       <Modal.BridgeModalWrapper>
-        <Modal.CloseIcon onClick={() => handlers.closeModalClickHandler()}>
+        <Modal.CloseIcon onClick={() => handlers.closeModal()}>
           <Close />
         </Modal.CloseIcon>
 
         <Modal.BridgeLayout>
           {flags.showBridgeExchangeModal &&
-            (!isTabletOrMobile || (isTabletOrMobile && !showInfoModal)) && (
+            (!collapsedInfoBreakpoint || (collapsedInfoBreakpoint && !showInfoModal)) && (
               <main>
                 <Modal.CaptionLeft>Onomy Bridge Here</Modal.CaptionLeft>
 
@@ -261,7 +263,7 @@ export default function BridgeSwapModal({ ...props }) {
                   >
                     Swap wNOM for NOM
                   </Modal.FullWidthButton>
-                  {isTabletOrMobile && (
+                  {collapsedInfoBreakpoint && (
                     <Modal.SecondaryButton
                       style={{ width: '100%', height: 52, marginTop: '15px' }}
                       onClick={() => {
@@ -293,13 +295,13 @@ export default function BridgeSwapModal({ ...props }) {
           {flags.showTransactionCompleted && (
             <main>
               <BridgeTransactionComplete
-                closeModalHandler={handlers.closeModalClickHandler}
+                closeModalHandler={handlers.closeModal}
                 amountValue={values.amountValue}
               />
             </main>
           )}
-          {(showInfoModal || !isTabletOrMobile) && (
-            <BridgeSwapModalInfo closeModalClickHandler={() => setShowInfoModal(false)} />
+          {(showInfoModal || !collapsedInfoBreakpoint) && (
+            <BridgeSwapModalInfo closeModal={() => setShowInfoModal(false)} />
           )}
         </Modal.BridgeLayout>
       </Modal.BridgeModalWrapper>

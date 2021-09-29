@@ -52,12 +52,12 @@ const BondingCurveLayout = styled.div`
 
 export default function BondingCurve() {
   const [cookies, setCookie] = useCookies(['visitedBefore']);
-  const isDesktopOrLaptop = useMediaQuery({ minWidth: responsive.laptopSmall });
+  const onboardingBreakpoint = useMediaQuery({ minWidth: responsive.laptopSmall });
 
   return (
     <BondingCurveContainer>
       <BondingCurveLayout>
-        {!cookies.visitedBefore && isDesktopOrLaptop && (
+        {!cookies.visitedBefore && onboardingBreakpoint && (
           <Steps
             enabled
             options={{

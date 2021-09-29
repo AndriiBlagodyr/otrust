@@ -221,7 +221,7 @@ export default function BridgeSwapMobile({ ...props }) {
         <BridgeSwapModal>
           <ModalInfo>
             <BridgeTransactionComplete
-              closeModalHandler={handlers.closeModalClickHandler}
+              closeModalHandler={handlers.closeModal}
               amountValue={values.amountValue}
             />
           </ModalInfo>
@@ -295,12 +295,12 @@ export default function BridgeSwapMobile({ ...props }) {
         isOpen={flags.showBridgeExchangeModal && !infoModal}
         style={modalOverride}
         data-testid="bridge-mobile-swap-modal"
-        onRequestClose={() => handlers.closeModalClickHandler()}
+        onRequestClose={() => handlers.closeModal()}
       >
         <BridgeSwapModal>
           <ModalHeader>
             <ModalBtn
-              onClick={() => handlers.closeModalClickHandler()}
+              onClick={() => handlers.closeModal()}
               data-testid="bridge-mobile-header-button"
             >
               <FontAwesomeIcon icon={faChevronLeft} />

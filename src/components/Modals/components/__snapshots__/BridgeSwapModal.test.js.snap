@@ -691,11 +691,10 @@ exports[`Given the BridgeSwapModal component when the component is rendered shou
 @media screen and (max-width:1180px) {
   .c1 {
     width: 600px;
-    top: 50px;
+    top: 20px;
     -webkit-transform: translate(-50%,0);
     -ms-transform: translate(-50%,0);
     transform: translate(-50%,0);
-    max-height: calc(100% - 100px);
   }
 }
 
